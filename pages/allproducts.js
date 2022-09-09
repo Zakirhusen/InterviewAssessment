@@ -159,7 +159,7 @@ useEffect(() => {
 };
 
 export const getServerSideProps = async (context) => {
-  console.log("server side props");
+  // console.log("server side props");
   let result = await fetch(
     "https://react-tasks-nodejs-api.herokuapp.com/product/list",
     {
