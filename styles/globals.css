@@ -1,0 +1,221 @@
+html,
+body {
+  background: #0d1112;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+/************** Navbar designing ****************/
+.navbar {
+  width: 100%;
+  display: flex;
+  background-color: #141b23;
+  padding: 1rem 2rem;
+  margin-top: 0;
+  list-style: none;
+  color: #f0f0e7;
+}
+.nav-item a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav-item {
+  height: 2rem;
+  /* width: 3rem; */
+  padding: 11px 10px;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+.nav-item:hover a {
+  color: #136edc;
+}
+.nav-item:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+/*************Designing create product  */
+.main-div {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-decoration: none;
+  /* border: 2px solid white; */
+}
+.creat-product-main-div {
+  height: auto;
+}
+.sub-div {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  width: 40%;
+  margin-bottom: 5rem;
+  /* border: 2px solid white; */
+}
+.heading-create-product {
+  font-size: 2rem;
+  color: rgb(227, 227, 227);
+}
+p {
+  color: rgb(198, 197, 197);
+  margin-top: 5px;
+  margin-bottom: 2rem;
+}
+.create-product-div {
+  padding: 3rem 0;
+
+  border-radius: 15px;
+  background-color: #141b23;
+  height: 100%;
+  width: 100%;
+}
+.input {
+  border-radius: 5px;
+  width: 75%;
+  height: 3.5rem;
+  margin: 10px 0;
+  background-color: #202a36;
+  outline: none;
+  border: none;
+  color: rgb(240, 46, 46);
+  padding: 20px 10px;
+  font-size: 1.2rem;
+}
+.input.desc {
+  width: 75%;
+  height: 8rem;
+  font: inherit;
+}
+::placeholder {
+  color: rgb(179, 178, 178);
+  font-size: 1rem;
+}
+.input-btn:hover {
+  background-color: white;
+  color: #0052cc;
+  cursor: pointer;
+}
+.input-btn {
+  background-color: #0052cc;
+  color: white;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+/* *********Designing of Allproducts section********/
+.allProducts {
+  margin-top: 5rem;
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+  margin-bottom: 5rem;
+}
+
+table {
+  /* border: 2px solid forestgreen; */
+  width: 75%;
+  height: 200px;
+  color: white;
+  background-color: #141b23;
+  border-radius: 10px;
+  padding-bottom: 2rem;
+}
+
+th {
+  border: none;
+  height: 3rem;
+  border-bottom: 1px solid black;
+  background-color: #202a36;
+}
+
+td {
+  height: 2rem;
+  text-align: center;
+}
+
+.search-filter-container{
+  display: flex;
+  width: 75%;
+  /* border: 2px solid white; */
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-bar,
+.sort-bar,
+.search-bar,.search-bar::placeholder {
+  padding: 5px;
+  height: 3rem;
+  border-radius: 6px;
+  background-color: #202a36;
+  color: white;
+  font-size: 1.2rem ;
+  margin-left: 1rem;
+  border: none;
+}
+.search-filter-container select option {
+  /* border: 1px solid red; */
+  width: 10rem;
+}
+
+
+/* Designing pagination */
+.pagination-container{
+  height: 3rem;
+  width: 75%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202a36;
+}
+
+.pagination-btn{
+  border-radius: 5px;
+  font-size: 1.2rem;
+  height: 100%;
+  width: 3rem;
+  margin: 0 5px;
+}
+.pagination-btn:first-child,.pagination-btn:last-child{
+  width: 4rem;
+  text-transform: capitalize;
+}
+.active{
+  background-color: #0d1112;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+
+}
