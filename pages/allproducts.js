@@ -14,7 +14,7 @@ const AllProducts = ({ allProducts }) => {
   let NoOfPages=Math.ceil(products.length/NoOfItemsPerPage);
   const [pageNo, setPageNo] = useState(0)
 
-  // search according to input value
+  // Search function for search according to input value
   const searchFunc=(e)=>{
     let searchValue=e.target.value
     setSearch(e.target.value)
@@ -31,9 +31,10 @@ const AllProducts = ({ allProducts }) => {
   // Filter product
   const filterProducts=(e)=>{
     setFilterValue(e.target.value)
+
     // After selecting  filter value make search value empty and setDisplayProducts to products 
     setSearch("")
-    setProductsToDisplay(products )
+    setProductsToDisplay(products.slice(0,10))
   }
 
 // Sort products according to value
@@ -41,7 +42,7 @@ const sortProducts=(e)=>{
   let sortValue=e.target.value
   setSortValue(sortValue)
 
-  const sortedProducts=!sortValue? products: [...products].sort((a,b)=>{
+  const sortedProducts=!sortValue? products.slice(0,10): [...products].sort((a,b)=>{
     if(sortValue=="Inc_id"||sortValue==="Incproduct_type"||sortValue==="Incsale_price"||sortValue==="Incoriginal_price") {
       return parseInt(a[sortValue.slice(3)]) - parseInt(b[sortValue.slice(3)])
 
@@ -71,9 +72,8 @@ const decPage=()=>{
   setPageNo( +pageNo-1)
 }
 useEffect(() => {
-  // localStorage.setItem("localDataArray", JSON.stringify(listItem));
   setProductsToDisplay(products.slice(pageNo*NoOfItemsPerPage,pageNo*NoOfItemsPerPage+NoOfItemsPerPage))
-  console.log(pageNo,NoOfPages)
+  // console.log(pageNo,NoOfPages)
 },[pageNo]);
 
   return (
