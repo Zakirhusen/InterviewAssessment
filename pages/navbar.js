@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <>
         <ul className='navbar'>
@@ -23,4 +23,5 @@ export const Navbar = () => {
   )
 }
 
+export default Navbar;
 

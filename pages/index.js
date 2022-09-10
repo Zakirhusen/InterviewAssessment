@@ -5,9 +5,7 @@ export default function Home() {
 
   router.isReady?router.push("/allproducts"):""
   return (
-<>
-<AllProducts></AllProducts>
-</>  
+<></>  
   
       );
 }
