@@ -11,8 +11,10 @@ const AllProducts = ({ allProducts }) => {
   
   // for pagination
   let NoOfItemsPerPage=10
-  let NoOfPages=Math.ceil(products.length/NoOfItemsPerPage);
+  let NoOfPages=Math.ceil(productsToDisplay.length/NoOfItemsPerPage);
   const [pageNo, setPageNo] = useState(0)
+  const [pageItems,setPageItems] = useState([])
+
 
   // Search function for search according to input value
   const searchFunc=(e)=>{
@@ -34,7 +36,7 @@ const AllProducts = ({ allProducts }) => {
 
     // After selecting  filter value make search value empty and setDisplayProducts to products 
     setSearch("")
-    setProductsToDisplay(products.slice(0,10))
+    setProductsToDisplay(products)
   }
 
 // Sort products according to value
@@ -42,7 +44,7 @@ const sortProducts=(e)=>{
   let sortValue=e.target.value
   setSortValue(sortValue)
 
-  const sortedProducts=!sortValue? products.slice(0,10): [...products].sort((a,b)=>{
+  const sortedProducts=!sortValue? products: [...products].sort((a,b)=>{
     if(sortValue=="Inc_id"||sortValue==="Incproduct_type"||sortValue==="Incsale_price"||sortValue==="Incoriginal_price") {
       return parseInt(a[sortValue.slice(3)]) - parseInt(b[sortValue.slice(3)])
 
@@ -72,17 +74,19 @@ const decPage=()=>{
   setPageNo( +pageNo-1)
 }
 useEffect(() => {
-  setProductsToDisplay(products.slice(pageNo*NoOfItemsPerPage,pageNo*NoOfItemsPerPage+NoOfItemsPerPage))
+  setPageItems(productsToDisplay.slice(pageNo*NoOfItemsPerPage,pageNo*NoOfItemsPerPage+NoOfItemsPerPage))
   // console.log(pageNo,NoOfPages)
-},[pageNo]);
+},[pageNo,productsToDisplay]);
 
   return (
       <div className="allProducts">
         <div className="search-filter-container">
           <h1 className="search-heading">All Products</h1>
           <div className="search-filter">
-{/* sort section*/}
-            <select  className="sort-bar" onChange={(e)=>sortProducts(e)} name="" placeholder="select" id="">
+
+      {/* sort section*/}
+
+            <select  className="sort-bar" value={sortValue} onChange={(e)=>sortProducts(e)} name="" placeholder="select" id="">
               <option value="" placeholder="">Sort By</option>
               <option value="Inc_id">DateTime(Oldest first)</option>
               <option value="Dec_id">DateTime(Newest first)</option>
@@ -99,7 +103,9 @@ useEffect(() => {
               <option value="Incdescription">Description A-Z</option>
               <option value="Decdescription">Description Z-A</option>
             </select>
+
             {/* filter */}
+
             <select  name="" className="filter-bar" value={filterValue} onChange={(e)=>filterProducts(e)} placeholder="select" id="">
               <option value="" placeholder="">Filter</option>
               <option value="date_n_time">Date and Time</option>
@@ -110,10 +116,13 @@ useEffect(() => {
               <option value="product_type">Product Type</option>
               <option value="description">Description</option>
             </select>
+
             {/* search bar */}
+
           <input type="text" className="search-bar" placeholder="Search" value={search} onChange={(e) => searchFunc(e)}/>
           </div>
         </div>
+          <span style={{color:"white"}}>{productsToDisplay.length} entries found </span>
         <table>
           <tbody>
             <tr>
@@ -126,10 +135,8 @@ useEffect(() => {
               <th>Product Type</th>
               <th>Description</th>
             </tr>
-            {productsToDisplay.map((currElem, index) => {
-              
+            {pageItems.map((currElem, index) => {
               return (
-
                 <tr key={Math.random()}>
                   <td>{index + 1}</td>
                   <td>{currElem.date_n_time}</td>
@@ -149,7 +156,7 @@ useEffect(() => {
         
         <div className="pagination-container">
         <button  className="pagination-btn" onClick={decPage} disabled={pageNo<1?true:false}>prev</button>
-        {  Array(Math.ceil(products.length/10)).fill("2").map((elem,index)=>{
+        {  Array(Math.ceil(productsToDisplay.length/10)).fill("2").map((elem,index)=>{
             return <button className={`pagination-btn ${pageNo==index?"active":""}`} onClick={(e)=>paginationFunc(e)} disabled={false} key={index} value={index} >{index+1}</button>
           })}
         <button  className="pagination-btn" onClick={incPage} disabled={pageNo>NoOfPages-2?true:false} >next</button>
