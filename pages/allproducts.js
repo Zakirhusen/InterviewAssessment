@@ -25,7 +25,7 @@ const AllProducts = ({ allProducts }) => {
  return !filterValue || filterValue=="product_name"?currElem.product_name.toLowerCase().includes(searchValue.toLowerCase()):String(currElem[filterValue]).toLowerCase().includes(searchValue.toLowerCase())
 });
     setProductsToDisplay(filteredProducts)
-    setPageNo(0)
+   // setPageNo(0)
   }
 
   // console.log("productToDisplay", productsToDisplay);
