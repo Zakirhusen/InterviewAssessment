@@ -135,7 +135,7 @@ useEffect(() => {
               <th>Product Type</th>
               <th>Description</th>
             </tr>
-            {pageItems.map((currElem, index) => {
+            {pageItems && pageItems.map((currElem, index) => {
               return (
                 <tr key={Math.random()}>
                   <td>{index + 1}</td>
