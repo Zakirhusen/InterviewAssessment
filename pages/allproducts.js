@@ -37,6 +37,7 @@ const AllProducts = ({ allProducts }) => {
     // After selecting  filter value make search value empty and setDisplayProducts to products 
     setSearch("")
     setProductsToDisplay(products)
+    setPageNo(0)
   }
 
 // Sort products according to value
@@ -60,6 +61,7 @@ const sortProducts=(e)=>{
     }  
   })
   setProductsToDisplay(sortedProducts)
+  setPageNo(0)
 }
 
 // pagination
@@ -76,7 +78,7 @@ const decPage=()=>{
 useEffect(() => {
   setPageItems(productsToDisplay.slice(pageNo*NoOfItemsPerPage,pageNo*NoOfItemsPerPage+NoOfItemsPerPage))
   // console.log(pageNo,NoOfPages)
-},[pageNo,pageItems,productsToDisplay]);
+},[pageNo,productsToDisplay]);
 
   return (
       <div className="allProducts">
