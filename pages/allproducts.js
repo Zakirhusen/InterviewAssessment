@@ -76,7 +76,7 @@ const decPage=()=>{
 useEffect(() => {
   setPageItems(productsToDisplay.slice(pageNo*NoOfItemsPerPage,pageNo*NoOfItemsPerPage+NoOfItemsPerPage))
   // console.log(pageNo,NoOfPages)
-},[pageNo,productsToDisplay]);
+},[pageNo,pageItems,productsToDisplay]);
 
   return (
       <div className="allProducts">
